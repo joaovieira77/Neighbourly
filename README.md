@@ -1,6 +1,8 @@
 # 🏢 Neighbourly — Condominium Management App
 
 Neighbourly is a full-stack web application designed to streamline condominium administration. It empowers residents and annual administrators to manage payments, meetings, expenses, and communication in a secure and organized way.
+-Neighbourly is currently in development (WIP).
+-The project is being fully built by me, covering both Backend and Frontend.
 
 ---
 
@@ -83,15 +85,21 @@ Neighbourly uses JWT-based authentication. Users can:
 
 ### 🔧 Backend Setup
 
-```bash
+``` bash
 cd server
 npm install
+# Create a .env file in the server directory with:
+# PORT=3037
+# JWT_SECRET=uma_chave_secreta_segura
 node index.js
--create a .env file
-PORT=3037
-JWT_SECRET=uma_chave_secreta_segura
-
+````
 ### 💻 Frontend Setup
+```bash
 cd client
 npm install
 npm start
+```
+
+### Status
+-Neighbourly is currently in development (WIP).
+-The project is being fully built by me, covering both Backend and Frontend.
