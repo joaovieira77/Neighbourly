@@ -1,4 +1,4 @@
-# 🏠 Neighbourly Frontend
+# 🏢 Neighbourly Frontend
 
 Neighbourly is a condominium management platform designed to simplify communication,  and administration between residents and annual administrators. This frontend interfaces with the Neighbourly backend API and adapts its features based on user roles.
 
