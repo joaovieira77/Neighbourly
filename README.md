@@ -1,7 +1,7 @@
 # 🏢 Neighbourly — Condominium Management App
 
-Neighbourly is a full-stack web application designed to streamline condominium administration. It empowers residents and annual administrators to manage payments, meetings, expenses, and communication in a secure and organized way.
--Neighbourly is currently in development (WIP).
+Neighbourly is a full-stack web application designed to streamline condominium administration. It empowers residents and annual administrators to manage payments, meetings, expenses, and communication in a secure and organized way. <br>
+-Neighbourly is currently in development (WIP). <br>
 -The project is being fully built by me, covering both Backend and Frontend.
 
 ---
@@ -101,5 +101,5 @@ npm start
 ```
 
 ### Status
--Neighbourly is currently in development (WIP).
+-Neighbourly is currently in development (WIP). <br>
 -The project is being fully built by me, covering both Backend and Frontend.
