@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# 🏠 Neighbourly Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Neighbourly is a condominium management platform designed to simplify communication,  and administration between residents and annual administrators. This frontend interfaces with the Neighbourly backend API and adapts its features based on user roles.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ⚙️ Tech Stack
 
-### `npm start`
+- **Framework:** React  
+- **Routing:** React Router  
+- **State Management:** Context API (or Redux)  
+- **HTTP Client:** Axios  
+- **Authentication:** JWT (stored in localStorage)  
+- **Styling:** CSS Modules / Tailwind / Styled Components (depending on implementation)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧭 Navigation Overview
 
-### `npm test`
+### 🔐 Authentication
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Login Page**  
+  - Sends `POST /auth/login`  
+  - Stores JWT token  
+  - Redirects to dashboard
 
-### `npm run build`
+- **Signup Page**  
+  - Sends `POST /auth/signup`  
+  - Used for initial registration of residents
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🏠 Dashboard
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Displays recent notifications, upcoming meetings, and quota status  
+- Content adapts based on user role (`resident` vs `admin`)  
+- May include visual indicators or charts
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 💰 Quotas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Resident:**  
+  - View personal quotas (`GET /quotas/me`)  
+  - Status: Pending or Paid
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Administrator:**  
+  - Assign quotas (`POST /quotas`)  
+  - Update quota value (`PATCH /quotas/:id/valor`)  
+  - Mark quota as paid (`PATCH /quotas/:id/pagar`)  
+  - View quotas by year (`GET /quotas/ano/:ano`)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### 📦 Expenses
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Administrator:**  
+  - Create new expenses (`POST /despesas`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **All users:**  
+  - View expenses (`GET /despesas?ano=YYYY`)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 📣 Notifications
 
-### Analyzing the Bundle Size
+- **Administrator:**  
+  - Create notifications (`POST /notificacoes`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **All users:**  
+  - View notifications (`GET /notificacoes`)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 🛠️ Occurrences
 
-### Advanced Configuration
+- **Resident:**  
+  - Report issues (`POST /ocorrencias`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **All users:**  
+  - View reported occurrences (`GET /ocorrencias`)
 
-### Deployment
+- **Administrator:**  
+  - Resolve occurrences (`PATCH /ocorrencias/:id/resolver`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+### 📅 Meetings
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Administrator:**  
+  - Schedule meetings (`POST /reunioes`)  
+  - Edit meetings (`PATCH /reunioes/:id`)  
+  - Delete meetings (`DELETE /reunioes/:id`)  
+  - Register meeting minutes (`PATCH /reunioes/:id/ata`)
+
+- **All users:**  
+  - View meetings (`GET /reunioes`)
+
+---
+
+## 🔐 Authentication & Authorization
+
+- JWT token stored in `localStorage`  
+- Axios interceptor adds `Authorization: Bearer <token>` to requests  
+- Protected routes using `PrivateRoute` or equivalent  
+- Role-based rendering for admin-only features
